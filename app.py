@@ -1,5 +1,3 @@
-#new code me
-MODEL_PATH = "plant_disease_model_1_latest.pt"
 
 import os
 from flask import Flask, redirect, render_template, request
@@ -26,16 +24,20 @@ import gdown
 #         f.write(r.content)
 
 
+MODEL_PATH = "plant_disease_model_1_latest.pt"
+
+file_id = "1tuHQhTzQ0ahIq_gQKor3v3rZ6Mpyhglg"
+url = f"https://drive.google.com/uc?id={file_id}"
+
 if not os.path.exists(MODEL_PATH):
-    url = "https://drive.google.com/uc?id=1tuHQhTzQ0ahIq_gQKor3v3rZ6Mpyhglg"
-    gdown.download(url, MODEL_PATH, quiet=False)
-
-     model = CNN.CNN(39)
-    model.load_state_dict(torch.load(MODEL_PATH, map_location="cpu"))
-    model.eval()
-    return model
-
-model = load_model()
+    gdown.download(url, MODEL_PATH, quiet=False, fuzzy=True)
+app = Flask(__name__)
+model = CNN.CNN(39)
+model.load_state_dict(torch.load(MODEL_PATH, map_location=torch.device('cpu')))
+model.eval()
+  
+  
+print(os.path.getsize("plant_disease_model_1_latest.pt"))
 #end now 
 
 
@@ -103,6 +105,7 @@ def market():
 # if __name__ == '__main__':
 #     app.run(debug=True)
 
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port, debug=False)
+    app.run(host="0.0.0.0", port=port)

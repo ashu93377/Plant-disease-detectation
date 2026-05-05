@@ -21,3 +21,7 @@ __pycache__/
 .ipynb_checkpoints/
 
 plant_disease_model_1_latest.pt
+
+static/uploads/
+*.pt
+__pycache__/
