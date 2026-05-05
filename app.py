@@ -1,3 +1,6 @@
+#new code me
+MODEL_PATH = "plant_disease_model_1_latest.pt"
+
 import os
 from flask import Flask, redirect, render_template, request
 from PIL import Image
@@ -8,18 +11,31 @@ import torch
 import pandas as pd
 #add new 
 import requests
+import gdown
 
-MODEL_PATH = "plant_disease_model_1_latest.pt"
+
+
 
 # Download model if not present
-if not os.path.exists(MODEL_PATH):
-    print("Downloading model...")
-    url = "https://drive.google.com/uc?export=download&id=1tuHQhTzQ0ahIq_gQKor3v3rZ6Mpyhglg"
+# if not os.path.exists(MODEL_PATH):
+#     print("Downloading model...")
+#     url = "https://drive.google.com/uc?export=download&id=1tuHQhTzQ0ahIq_gQKor3v3rZ6Mpyhglg"
     
-    r = requests.get(url)
-    with open(MODEL_PATH, "wb") as f:
-        f.write(r.content)
+#     r = requests.get(url)
+#     with open(MODEL_PATH, "wb") as f:
+#         f.write(r.content)
 
+
+if not os.path.exists(MODEL_PATH):
+    url = "https://drive.google.com/uc?id=1tuHQhTzQ0ahIq_gQKor3v3rZ6Mpyhglg"
+    gdown.download(url, MODEL_PATH, quiet=False)
+
+     model = CNN.CNN(39)
+    model.load_state_dict(torch.load(MODEL_PATH, map_location="cpu"))
+    model.eval()
+    return model
+
+model = load_model()
 #end now 
 
 
