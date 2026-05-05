@@ -1,0 +1,23 @@
+# Virtual Environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Model files
+*.pt
+*.pth
+*.h5
+
+# System files
+.DS_Store
+
+# Large binary files
+*.dll
+*.lib
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+plant_disease_model_1_latest.pt
