@@ -8,8 +8,8 @@ import numpy as np
 import torch
 import pandas as pd
 #add new 
-import requests
-import gdown
+# import requests
+# import gdown
 
 
 
@@ -26,22 +26,7 @@ import gdown
 
 MODEL_PATH = "plant_disease_model_1_latest.pt"
 
-file_id = "1tuHQhTzQ0ahIq_gQKor3v3rZ6Mpyhglg"
-url = f"https://drive.google.com/uc?id={file_id}"
 
-
-if not os.path.exists(MODEL_PATH):
-    gdown.download(
-        id="1tuHQhTzQ0ahIq_gQKor3v3rZ6Mpyhglg",
-        output=MODEL_PATH,
-        quiet=False
-    )
-app = Flask(__name__)
-model = CNN.CNN(39)
-model.load_state_dict(torch.load(MODEL_PATH, map_location=torch.device('cpu')))
-model.eval()
-  
-  
 print(os.path.getsize("plant_disease_model_1_latest.pt"))
 #end now 
 
