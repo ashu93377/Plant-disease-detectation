@@ -8,8 +8,8 @@ import numpy as np
 import torch
 import pandas as pd
 #add new 
-import requests
-import gdown
+# import requests
+# import gdown
 
 
 
@@ -22,7 +22,7 @@ import gdown
 #     r = requests.get(url)
 #     with open(MODEL_PATH, "wb") as f:
 #         f.write(r.content)
-
+plant_disease_model_1_latest.pt
 
 MODEL_PATH = "plant_disease_model_1_latest.pt"
 
@@ -30,7 +30,7 @@ file_id = "1tuHQhTzQ0ahIq_gQKor3v3rZ6Mpyhglg"
 url = f"https://drive.google.com/uc?id={file_id}"
 
 if not os.path.exists(MODEL_PATH):
-    gdown.download(url, MODEL_PATH, quiet=False, fuzzy=True)
+ gdown.download(url, MODEL_PATH, quiet=False)
 
   
 print(os.path.getsize("plant_disease_model_1_latest.pt"))
